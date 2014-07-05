@@ -15,11 +15,11 @@ To play the game, you can download the binaries for Windows 32 bit at http://goo
 
 Screenshots:
 ----
-(Screenshots/title.png "Title Screen")
+![Title](Screenshots/title.png "Title Screen")
 
-(Screenshots/game.png "In Game")
+![Gameplay](Screenshots/game.png "In Game")
 
-(Screenshots/gameover.png "Game Over")
+![Game Over](Screenshots/gameover.png "Game Over")
 
 Possible Additions:
 ----
