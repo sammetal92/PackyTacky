@@ -11,8 +11,6 @@ This game is distributed under the Creative Commons Attribution-NonCommercial-Sh
 
 I plan to (possibly) release this for Windows, OSX, Linux and Android operating systems. Currently, I've only built it for Windows 32 and 64 bit.
 
-If you would like to download and play the game, you can download the 32 or 64 bit in the binaries folder.
-
 Possible Additions:
 ----
 - Difficulty levels
