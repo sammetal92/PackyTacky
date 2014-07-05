@@ -27,3 +27,4 @@ Possible Additions:
 - Enemy character speed and rotation increasing over time
 - number of enemies increasing
 - timer
+- Ability to reset highscore
