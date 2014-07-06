@@ -44,6 +44,15 @@ function render_menu()
 		love.event.quit()
 	end
 
+	local resetHSButton = loveframes.Create("button")
+	resetHSButton:SetSize(90, 25)
+	resetHSButton:SetPos(gr.getWidth() - 95, 5)
+	resetHSButton:SetState("startmenu")
+	resetHSButton:SetText("Reset Highscore")
+	resetHSButton.OnClick = function()
+		p.highscore = 0
+	end
+
 	--PAUSE MENU
 
 	local resumeButton = loveframes.Create("button")
