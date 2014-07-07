@@ -13,6 +13,10 @@ function Food:update(dt)
 		Food:respawn()
 		foodSfx:play()
 		o.score = o.score + 1
+		if o.score - prevScore == 10 and e.speed < 500 then
+			prevScore = o.score
+			e.speed = e.speed + 30
+		end
 	end
 	-- checking collision with enemy character
 	if e.y+e.h > f.y and e.x+e.w > f.x and e.y < f.y+f.h and e.x < f.x+f.w then

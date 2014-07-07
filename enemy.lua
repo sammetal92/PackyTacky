@@ -8,7 +8,7 @@ end
 
 function Enemy:new()
 	e = {x=gr.getWidth()+30, y=100, w=30, h=30, facing="right", imgLeft=gr.newImage("img/enLeft.png"),
-		imgRight=gr.newImage("img/enRight.png"), speed=300, angleDivider=2}
+		imgRight=gr.newImage("img/enRight.png"), speed=200, angleDivider=1}
 	Enemy:respawn()
 	setmetatable(e, {__index = Enemy})
 	return e
@@ -30,7 +30,7 @@ function Enemy:update(dt)
 	end
 
 	if gamestate == "playing" and e.facing == "left" and e.x > -100 then
-		e.x = e.x - 300 * dt
+		e.x = e.x - e.speed * dt
 		_angle = math.angle(e.x, e.y, f.x, f.y) -- gets the angle between the spawned food and enemy character
 		-- adjusts angle toward the spawned food
 		dy = math.sin(_angle) * (dt * (e.speed/e.angleDivider)) -- we can use angleDivider to vary difficulty
@@ -42,7 +42,7 @@ function Enemy:update(dt)
 	end
 	
 	if e.facing == "right" and gamestate == "playing" and e.x < gr.getWidth() + 100 then
-		e.x = e.x + 300 * dt
+		e.x = e.x + e.speed * dt
 		-- same calculations as done for e.facing == "left"
 		_angle = math.angle(e.x, e.y, f.x, f.y)
 		dy = math.sin(_angle) * (dt * (e.speed/e.angleDivider))
@@ -59,6 +59,7 @@ function Enemy:respawn()
 end
 
 function Enemy:newGame()
+	e.speed = 200
 	gameoverPlayed = false
 	e.x = gr.getWidth()+30
 	Enemy:respawn()

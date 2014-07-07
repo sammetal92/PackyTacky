@@ -20,11 +20,3 @@ Screenshots:
 ![Gameplay](Screenshots/game.png "In Game")
 
 ![Game Over](Screenshots/gameover.png "Game Over")
-
-Possible Additions:
-----
-- Difficulty levels
-- Enemy character speed and rotation increasing over time
-- number of enemies increasing
-- timer
-- Ability to reset highscore

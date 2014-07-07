@@ -5,7 +5,9 @@ require("AnAL")
 require("Loveframes")
 require("startmenu")
 
+prevScore = 0
 gr, kb, fs, au = love.graphics, love.keyboard, love.filesystem, love.audio
+mute = false
 highscores = {}
 
 function love.load()
@@ -107,7 +109,7 @@ function love.draw()
 		loveframes.draw()
 		gr.draw(logoImage, (gr.getWidth()-logoImage:getWidth())/2, 70)
 		gr.setFont(fontfont)
-		gr.printf("Highscore: "..p.highscore, 0, (gr.getHeight()-250)/2, gr.getWidth(), "center")
+		gr.print("Highscore: "..p.highscore, 255, (gr.getHeight()-270)/2)
 		gr.setFont(defaultFont)
 		gr.printf("Copyright © 2014 Abdul Sami Farrukh (Sam Storms) - All Rights Reserved. MCN: CUP4T-2HZJY-JWLZH", 0, gr.getHeight()-50, gr.getWidth(), "center")
 		gr.printf("Distributed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License", 0, gr.getHeight()-30, gr.getWidth(), "center")
@@ -140,7 +142,7 @@ function love.draw()
 	elseif gamestate == "paused" then
 		loveframes.draw()
 	elseif gamestate == "playing" then
-		playingBgm:play()
+		if mute == false then playingBgm:play() end
 		deltaTime = love.timer.getTime()
 		gr.setColor(0, 0, 255)
 		gr.rectangle("fill", 0, 0, gr.getWidth(), 28)
