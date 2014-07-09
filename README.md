@@ -11,6 +11,8 @@ This game is distributed under the Creative Commons Attribution-NonCommercial-Sh
 
 I plan to (possibly) release this for Windows, OSX, Linux and Android operating systems. Currently, I've only built it for Windows 32 and 64 bit.
 
+Download The Game:
+----
 To play the game, you can download the binaries for Windows 32 bit at http://goo.gl/lqxNU4 and for Windows 64 bit at http://goo.gl/WhSEpL
 
 Screenshots:
