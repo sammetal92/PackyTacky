@@ -9,11 +9,13 @@ Please note that this is a work in progress. This is just my implementation of t
 
 This game is distributed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License. In summary, it means you can copy and redistribute this game or remix, transform or build upon it after giving all due credits. You must not use this game or any of its material for commercial purposes. Upon redistribution of this or a remix or transformed version of this game, you must share it with the same license and give due credit.
 
-I plan to (possibly) release this for Windows, OSX, Linux and Android operating systems. Currently, I've only built it for Windows 32 and 64 bit.
+As of yet, the game has been released for Windows 32 and 64 bits, and Mac OSX (Credits go to Eamonn Rea https://github.com/sonic2kk)
 
 Download The Game:
 ----
 To play the game, you can download the binaries for Windows 32 bit at http://goo.gl/lqxNU4 and for Windows 64 bit at http://goo.gl/WhSEpL
+
+Download for Mac OSX: http://goo.gl/sjEb8A
 
 Screenshots:
 ----
