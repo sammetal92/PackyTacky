@@ -1,3 +1,13 @@
+function saveSS()
+	local file = io.open (fs.getSaveDirectory() .. "/score.png", "rb")
+	local inp = file:read("*a")
+	file:close()
+
+	local outfile = io.open("score.png", "wb")
+	outfile:write(inp)
+	outfile:close()
+end
+
 function render_menu()
 	--MAIN MENU
 
@@ -153,20 +163,6 @@ function render_menu()
 
 	--GAME OVER MENU
 
-	local backButtonG = loveframes.Create("imagebutton")
-	backButtonG:SetSize(150, 40)
-	backButtonG:SetImage("img/backButton.png")
-	backButtonG:SetPos((gr.getWidth()-150)/2 , (gr.getHeight()+200)/2)
-	backButtonG:SetState("gameover")
-	backButtonG:SetText("")
-	backButtonG.OnClick = function()
-		p:spawnAgain()
-		en:newGame()
-		gamestate = "startmenu"
-		loveframes.SetState("startmenu")
-		if mute == false then menuMusic:play() end
-	end
-
 	local tryAgainButton = loveframes.Create("imagebutton")
 	tryAgainButton:SetSize(150, 40)
 	tryAgainButton:SetImage("img/tryButton.png")
@@ -181,5 +177,41 @@ function render_menu()
 		gamestate = "playing"
 		loveframes.SetState("playing")
 		menuMusic:stop()
+	end
+
+	local screenshotButton = loveframes.Create("imagebutton")
+	screenshotButton:SetSize(150, 40)
+	screenshotButton:SetImage("img/screenshot.png")
+	screenshotButton:SetPos((gr.getWidth()-150)/2 , (gr.getHeight()+200)/2)
+	screenshotButton:SetState("gameover")
+	screenshotButton:SetText("")
+	screenshotButton.OnClick = function()
+		screenshot = gr.newScreenshot(false)
+		screenshot:encode("score.png","png")
+		local frame = loveframes.Create("frame")
+		frame:SetName("Screenshot saved")
+		frame:SetSize(410, 80)
+		frame:SetState("gameover")
+		frame:SetPos((gr.getWidth()-410)/2, (gr.getHeight()-130)/2)
+
+		saveSS()
+
+		local text = loveframes.Create("text", frame)
+		text:SetText("Screenshot saved as \"score.png\" in the game directory")
+		text:SetPos(10, 30)
+	end
+
+	local backButtonG = loveframes.Create("imagebutton")
+	backButtonG:SetSize(150, 40)
+	backButtonG:SetImage("img/backButton.png")
+	backButtonG:SetPos((gr.getWidth()-150)/2 , (gr.getHeight()+320)/2)
+	backButtonG:SetState("gameover")
+	backButtonG:SetText("")
+	backButtonG.OnClick = function()
+		p:spawnAgain()
+		en:newGame()
+		gamestate = "startmenu"
+		loveframes.SetState("startmenu")
+		if mute == false then menuMusic:play() end
 	end
 end

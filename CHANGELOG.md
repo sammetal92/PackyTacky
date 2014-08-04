@@ -1,6 +1,17 @@
 ChangeLog
 ==========
 
+v2.0 (August 4, 2014)
+---
+- FIXED: Two or more apples spawning at the same place one after the other
+- Minor optimizations
+- Renamed "startmenu.lua" to "menu.lua"
+- Code cleanup
+- Modified enemy speed increments
+- Added option to take screenshot at game over
+- Added temporary speed increasing powerups
+- Released for Mac OSX
+
 v1.2 (July 7, 2014)
 ----
 - FIXED : Bugged reset highscore button

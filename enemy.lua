@@ -54,7 +54,6 @@ function Enemy:update(dt)
 end
 
 function Enemy:respawn()
-	math.randomseed(os.time())
 	e.y = math.random(32, gr.getHeight() - 32)
 end
 

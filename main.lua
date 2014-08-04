@@ -3,7 +3,7 @@ require("food")
 require("enemy")
 require("AnAL")
 require("Loveframes")
-require("startmenu")
+require("menu")
 
 prevScore = 0
 gr, kb, fs, au = love.graphics, love.keyboard, love.filesystem, love.audio
@@ -11,13 +11,19 @@ mute = false
 highscores = {}
 
 function love.load()
+	timerS = 0 --reset powerup timer
+	math.randomseed(os.time()) --seed the random function
+	-- Initialize images
 	backgroundImage = gr.newImage("img/bg.png")
 	logoImage = gr.newImage("img/logo.png")
 	gameoverImage = gr.newImage("img/gameover.png")
+
+	--Initialize objects
 	p = Player:new()
 	nom = Food:new()
 	en = Enemy:new()
 
+	--Initialize animations
 	animUp = newAnimation(p.imgUp, 32, 32, 0.08, 6)
 	animDown = newAnimation(p.imgDown, 32, 32, 0.08, 6)
 	animLeft = newAnimation(p.imgLeft, 32, 32, 0.08, 6)
@@ -26,6 +32,7 @@ function love.load()
 	enemyFacingLeft = newAnimation(en.imgLeft, 32, 32, 0.08, 0)
 	enemyFacingRight = newAnimation(en.imgRight, 32, 32, 0.08, 0)
 
+	--Check scores
 	if not fs.exists("scores.lua") then
 		fs.newFile("scores.lua")
 		fs.write("scores.lua", "p.highscore\n=\n"..p.highscore)
@@ -37,15 +44,19 @@ function love.load()
 
 	p.highscore = highscores[3]
 
+	--Initialize fonts
 	fontfont = gr.newFont("fonts/BuxtonSketch.ttf", 20)
 	defaultFont = gr.newFont(12)
 
+	--Initialize audio
 	playingBgm = au.newSource("sfx/music.ogg", "stream")
 	foodSfx = au.newSource("sfx/powerup.ogg", "static")
 	enemySfx = au.newSource("sfx/powerdown.ogg", "static")
 	menuMusic = au.newSource("sfx/mainmenumusic.ogg", "stream")
 	gameoverMusic = au.newSource("sfx/gameover.ogg", "static")
+	pwrSfx = au.newSource("sfx/pwr.ogg", "static")
 
+	--Set music and sound effects options
 	playingBgm:setLooping(true)
 	playingBgm:setVolume(0.7)
 
@@ -57,6 +68,7 @@ function love.load()
 
 	enemySfx:setVolume(0.1)
 	foodSfx:setVolume(0.1)
+	pwrSfx:setVolume(0.1)
 
 	gamestate = "startmenu"
 	loveframes.SetState("startmenu")
@@ -101,6 +113,10 @@ function love.update(dt)
 	loveframes.update(dt)
 end
 
+function love.touchpressed(id, x, y)
+	gr.print("touched!", gr.getWidth(), gr.getHeight())
+end
+
 function love.draw()
 	gr.setColor(255, 255, 255)
 	gr.draw(backgroundImage, 0, 0, 0, gr.getWidth()/800, gr.getHeight()/600)
@@ -137,7 +153,7 @@ function love.draw()
 		gr.printf("Love Frames library by Nikolai Resokav (NikolaiResokav.com)", 0, 180, gr.getWidth(), "center")
 		gr.printf("Animations and Love library by Bartbes (love2d.org/wiki/User:Bartbes)", 0, 220, gr.getWidth(), "center")
 		gr.printf("Powered by LÖVE2D (love2d.org)", 0, 260, gr.getWidth(), "center")
-		gr.printf("Special Thanks to Eamonn Rea (about.me/eamodev)", 0, 300, gr.getWidth(), "center")
+		gr.printf("Special Thanks to Eamonn Rea for the idea (about.me/eamodev)", 0, 300, gr.getWidth(), "center")
 		loveframes.draw()
 	elseif gamestate == "paused" then
 		loveframes.draw()
